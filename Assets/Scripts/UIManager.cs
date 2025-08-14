@@ -337,19 +337,18 @@ public class UIManager : MonoBehaviour
         runBackgroundCoroutine = StartCoroutine(RunMiddleBackground(runDuration, appearDuration, text, subText));
     }
 
-    public void GameOver(GameObject missedTile)
+    public void GameOver(Tile missedTile)
     {
         GameManager.Instance.isTappable = false;
         TileSpawner.Instance.StopSpawning();
         StartCoroutine(PlayGameOver(missedTile));
     }
 
-    private IEnumerator PlayGameOver(GameObject missedTile)
+    private IEnumerator PlayGameOver(Tile missedTile)
     {
         //All notes fall up
-        var tileSprite = missedTile.GetComponent<SpriteRenderer>();
-        float spriteHeight = tileSprite.bounds.size.y;
-        Debug.Log(spriteHeight);
+        var tileSprite = missedTile.mainSprite;
+        float spriteHeight = tileSprite.size.y;
         float time = 0f;
         float duration = 1f;
 

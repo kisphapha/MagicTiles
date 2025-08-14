@@ -857,7 +857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitLine: {fileID: 1513612264}
-  bottomLine: -6
+  bottomLine: -5
   audioSource: {fileID: 523706266}
   SongStartTime: 0
   isTappable: 0
@@ -1543,6 +1543,9 @@ MonoBehaviour:
   - tag: decorative_note
     prefab: {fileID: 1037699373383560464, guid: 08ec50562d92d2f4ab73d2e2be2a5162, type: 3}
     size: 10
+  - tag: long_tile
+    prefab: {fileID: 4410954560038334375, guid: b2aef46c1f3a855469982455cfc7fbff, type: 3}
+    size: 5
 --- !u!4 &947504499
 Transform:
   m_ObjectHideFlags: 0

@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Networking.Types;
 
 public class Tile : MonoBehaviour
 {
-    private float speed;
-    private Vector3 target;
-    private SpriteRenderer headSprite;
-    private bool tapped = false;
+    
+    public SpriteRenderer mainSprite;
 
     [Header("Visuals")]
     public SpriteRenderer ghostSprite;
@@ -17,19 +16,21 @@ public class Tile : MonoBehaviour
     [HideInInspector]
     public float desiredTapTime = 0f;
 
-    private float timer = 0f;
+    protected float timer = 0f;
+    protected float tileHeight = 0;
+    protected float speed;
+    protected Vector3 target;
+    protected bool tapped = false;
+
     public void Init(float speed, Vector3 target)
     {
         this.speed = speed;
         this.target = target;
+
+        tileHeight = mainSprite.size.y;
     }
 
-    private void Start()
-    {
-        headSprite = GetComponent<SpriteRenderer>();
-    }
-
-    void Update()
+    public virtual void Update()
     {
         timer += Time.deltaTime;
 
@@ -40,21 +41,6 @@ public class Tile : MonoBehaviour
                 transform.position.y - speed * Time.deltaTime,
                 transform.position.z
             );
-
-        if (transform.position.y < GameManager.Instance.bottomLine && gameObject.activeSelf)
-        {
-            if (tapped)
-            {
-                //Destroy(gameObject);
-                ObjectPool.Instance.ReturnToPool("tile", gameObject);
-                ResetData();
-            }
-            else
-            {
-                UIManager.Instance.GameOver(gameObject);
-                StartCoroutine(FlashTile(new Color(1f, 1f, 1f, 0.2f), 4f, 8));
-            }
-        }
 
 
 #if UNITY_EDITOR || UNITY_STANDALONE
@@ -75,7 +61,7 @@ public class Tile : MonoBehaviour
                     DetectTap(touch.position);
                 }
             }
-            
+
         }
     }
 
@@ -87,6 +73,7 @@ public class Tile : MonoBehaviour
         if (hit.collider != null)
         {
             Tile tile = hit.collider.GetComponent<Tile>();
+            if (tile == null) tile = hit.collider.GetComponentInParent<Tile>();
             if (tile != null)
             {
                 tile.OnTap();
@@ -94,13 +81,15 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void ResetData()
+    public virtual void ResetData()
     {
         tapped = false;
 
-        headSprite.color = new Color(1f, 1f, 1f, 1f);
+        mainSprite.color = new Color(1f, 1f, 1f, 1f);
 
-        GetComponent<Collider2D>().enabled = true;
+        var collider = GetComponent<Collider2D>();
+        if (collider == null) collider = GetComponentInChildren<Collider2D>();
+        collider.enabled = true;
 
         ghostSprite.enabled = true;
         ghostSprite.color = new Color(1, 1, 1, 0);
@@ -108,83 +97,27 @@ public class Tile : MonoBehaviour
 
         timer = 0;
     }
-    public void OnTap()
+
+    public virtual void OnTap()
     {
         if (tapped) return;
-        tapped = true;
- 
-        headSprite.color = new Color(0f,0f,0f,0f);
-        
-        StartCoroutine(PlayGhostEffect());
-
-        tapParticles.Play();
-
-        GetComponent<Collider2D>().enabled = false;
-
-        UIManager.Instance.FlashDecorations();
-
-        var difference = Mathf.Abs(timer - desiredTapTime);
-        var accuracy = UIManager.AccuracyText.Miss;
-
-        if (difference < 0.1f)
-        {
-            accuracy = UIManager.AccuracyText.Perfect;
-            UIManager.Instance.perfectCombo++;
-            UIManager.Instance.UpdateScore(3 + UIManager.Instance.perfectCombo - 1);
-        }
-        else if (difference < 0.3f) 
-        {
-            accuracy = UIManager.AccuracyText.Good;
-            UIManager.Instance.UpdateScore(2);
-            UIManager.Instance.perfectCombo = 0;
-        }
-        else
-        {
-            UIManager.Instance.UpdateScore(1);
-            UIManager.Instance.perfectCombo = 0;
-        }
-
-        UIManager.Instance.DisplayText(accuracy);
+        tapped = true;   
     }
 
-    private IEnumerator PlayGhostEffect()
+    protected IEnumerator FlashTile(Color flashColor, float flashDuration, int flashCount)
     {
-        ghostSprite.color = new Color(1, 1, 1, 0.5f);
-        ghostSprite.transform.localScale = Vector3.one;
-
-        float duration = 0.3f;
-        float time = 0f;
-        Color startColor = ghostSprite.color;
-
-        while (time < duration)
-        {
-            time += Time.deltaTime;
-            float t = time / duration;
-
-            // Scale up and fade out
-            ghostSprite.transform.localScale = Vector3.one * (1f + t * 0.5f);
-            ghostSprite.color = Color.Lerp(startColor, new Color(1, 1, 1, 0), t);
-
-            yield return null;
-        }
-
-        ghostSprite.enabled = false;
-    }
-
-    private IEnumerator FlashTile(Color flashColor, float flashDuration, int flashCount)
-    {
-        Color originalColor = headSprite.color;
+        Color originalColor = mainSprite.color;
 
         for (int i = 0; i < flashCount; i++)
         {
-            headSprite.color = flashColor;
+            mainSprite.color = flashColor;
             yield return new WaitForSeconds(flashDuration / (flashCount * 2));
 
-            headSprite.color = originalColor;
+            mainSprite.color = originalColor;
             yield return new WaitForSeconds(flashDuration / (flashCount * 2));
         }
 
-        headSprite.color = originalColor; // Make sure it stays normal after flashing
+        mainSprite.color = originalColor; // Make sure it stays normal after flashing
     }
 
 }

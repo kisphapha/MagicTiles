@@ -47,7 +47,8 @@
     },
     {
       "HitTime": 4.45,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration" : 0.8,
       "Lane": 3
     },
     {
@@ -102,7 +103,7 @@
     },
     {
       "HitTime": 8.1,
-      "IsLong": true,
+      "IsLong": false,
       "Lane": 1
     },
     {
@@ -782,32 +783,38 @@
     },
     {
       "HitTime": 61.6,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration" :  0.4,
       "Lane": 1
     },
     {
       "HitTime": 61.6,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 3
     },
     {
       "HitTime": 62.55,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 0
     },
     {
       "HitTime": 62.55,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 2
     },
     {
       "HitTime": 63.5,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 1
     },
     {
       "HitTime": 63.5,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 3
     },
     {
@@ -832,32 +839,38 @@
     },
     {
       "HitTime": 65.4,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 0
     },
     {
       "HitTime": 65.4,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 2
     },
     {
       "HitTime": 66.3,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 1
     },
     {
       "HitTime": 66.3,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 3
     },
     {
       "HitTime": 67.25,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 0
     },
     {
       "HitTime": 67.25,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 2
     },
     {
@@ -882,32 +895,38 @@
     },
     {
       "HitTime": 69.1,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 1
     },
     {
       "HitTime": 69.1,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 3
     },
     {
       "HitTime": 70.05,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 0
     },
     {
       "HitTime": 70.05,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 2
     },
     {
       "HitTime": 71.0,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 1
     },
     {
       "HitTime": 71.0,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 3
     },
     {
@@ -932,22 +951,26 @@
     },
     {
       "HitTime": 72.85,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 1
     },
     {
       "HitTime": 72.85,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 3
     },
     {
       "HitTime": 73.8,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 0
     },
     {
       "HitTime": 73.8,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration": 0.4,
       "Lane": 2
     },
     {
@@ -1142,7 +1165,8 @@
     },
     {
       "HitTime": 90.1,
-      "IsLong": false,
+      "IsLong": true,
+      "Duration" : 1,
       "Lane": 0
     }
   ]
