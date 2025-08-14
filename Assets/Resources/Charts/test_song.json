@@ -1,0 +1,60 @@
+{
+  "Name": "Fur Elise",
+  "AudioFilePath": "Audio/fur_elise",
+  "DropSpeed": 8,
+  "ScoreStars": [ 0, 15000, 30000 ],
+  "Tiles": [
+    {
+      "HitTime": 1.5,
+      "IsLong": false,
+      "Lane": 2
+    },
+    {
+      "HitTime": 2.0,
+      "IsLong": false,
+      "Lane": 3
+    },
+    {
+      "HitTime": 2.5,
+      "IsLong": false,
+      "Lane": 2
+    },
+    {
+      "HitTime": 3.0,
+      "IsLong": false,
+      "Lane": 3
+    },
+    {
+      "HitTime": 3.5,
+      "IsLong": false,
+      "Lane": 2
+    },
+    {
+      "HitTime": 4.0,
+      "IsLong": false,
+      "Lane": 1
+    },
+    {
+      "HitTime": 4.5,
+      "IsLong": false,
+      "Lane": 2
+    },
+    {
+      "HitTime": 5.0,
+      "IsLong": false,
+      "Lane": 1
+    },
+    {
+      "HitTime": 5.5,
+      "IsLong": true,
+      "Duration": 0.75,
+      "Lane": 0
+    },
+    {
+      "HitTime": 5.5,
+      "IsLong": true,
+      "Duration": 0.75,
+      "Lane": 2
+    }
+  ]
+}
