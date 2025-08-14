@@ -4,15 +4,14 @@
 1) Clone the repository
 2) Open the project with Unity version 2021.3.45f1 (preferred) or any 2021.3.xxx
 3) Open MainScene at Assets/Scenes/MainScene
+4) **IMPORTANT** : Please set the Game View aspect ratio to 9:16 (or 16:9 Portrait), or using a Mobile Simulator. (The editor might set to Free Aspect by default which possibly broke the layout)
+5) Click Run button
 
-### On Unity Editor
-4) Click Run button
-
-### On an Android device (if Android build support installed)
-4) Plug in an android device
-5) File -> Build Settings -> Android -> Switch Platform
-6) Run Device -> Choose your device
-7) Close the window -> File -> Build and Run
+### Run on an Android device (if Android build support installed)
+1) Plug in an android device
+2) File -> Build Settings -> Android -> Switch Platform
+3) Run Device -> Choose your device
+4) Close the window -> File -> Build and Run
 
 ## Design Choice
 - I stored song data in a seperate files and didn't hard-code in scripts. This would make it easier to tweak the beat map without rebuilding the whole game, it is also easier to switch songs or expand this basic game in a way that it can play many different songs.
