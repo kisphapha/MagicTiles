@@ -124,9 +124,13 @@ public class LongTile : Tile
     {
         isHolding = false;
         tapParticles.Stop();
-        mainSprite.color = new Color(0f, 0f, 0f, 0f);
-        StartCoroutine(PlayGhostEffect());
-        UIManager.Instance.UpdateScore(3);
+
+        if (holdTime >= extraDuration)
+        {
+            mainSprite.color = new Color(0f, 0f, 0f, 0f);
+            StartCoroutine(PlayGhostEffect());
+            UIManager.Instance.UpdateScore(3);
+        }
     }
 
     public override void Update()
