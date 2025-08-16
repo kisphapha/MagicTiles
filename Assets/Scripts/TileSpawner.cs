@@ -105,11 +105,13 @@ public class TileSpawner : MonoBehaviour
         Tile tile = go.GetComponent<Tile>();
         tile.Init(songData.DropSpeed, GameManager.Instance.hitLine.position);     
         tile.desiredTapTime =  data.HitTime - GameManager.Instance.GetSongTime();
+        BoxCollider2D collider = tile.GetComponent<BoxCollider2D>();
 
         if (data.IsLong)
         {
             LongTile longTile = go.GetComponent<LongTile>();
             longTile.InitLong(songData.DropSpeed, GameManager.Instance.hitLine.position, data.Duration);
+            collider = longTile.GetComponentInChildren<BoxCollider2D>();
         }
 
 
@@ -128,6 +130,7 @@ public class TileSpawner : MonoBehaviour
 
         // Step 3: Set sliced sprite size to match lane width
         sr.size = new Vector2(laneWidthWorld, sr.size.y);
+        collider.size = new Vector2(sr.size.x, collider.size.y);
         ghostSr.size = new Vector2(laneWidthWorld, ghostSr.size.y);
     }
 

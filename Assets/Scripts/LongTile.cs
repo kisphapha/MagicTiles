@@ -30,7 +30,7 @@ public class LongTile : Tile
         mainSprite.transform.localScale = new Vector3(mainSprite.transform.localScale.x, 1f, mainSprite.transform.localScale.z);
         ghostSprite.transform.localScale = new Vector3(ghostSprite.transform.localScale.x, 1f, ghostSprite.transform.localScale.z);
         mainSR.size = new Vector2(mainSR.size.x, lineLength);
-        mainCollider.offset = new Vector2(0, -lineLength / 2);
+        mainCollider.offset = new Vector2(0, -lineLength / 2 + mainCollider.size.y /2);
 
         sliderLine.localScale = new Vector3(sliderLine.localScale.x, 1f, sliderLine.localScale.z);
         sliderSR.size = new Vector2(sliderSR.size.x, lineLength - 1f);
